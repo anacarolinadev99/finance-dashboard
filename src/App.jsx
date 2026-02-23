@@ -17,29 +17,41 @@ export function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div>
+        <>
             <header>
-                <h1>Gerenciador Financeiro</h1>
+                <h1 data-text="Gerenciador Financeiro">
+                    Gerenciador Financeiro
+                </h1>
             </header>
-            <BalanceCard transactionList={dataFinances} />
+            <div className="container">
+                <BalanceCard transactionList={dataFinances} />
+            </div>
+            <div className="container summary-container">
+                <SummaryCards transactionList={dataFinances} />
 
-            <SummaryCards transactionList={dataFinances} />
-
-            <Button
-                label={'Nova Transação'}
-                onClick={() => setIsMenuOpen(true)}
-            />
-            <TransactionsCard
-                transactionList={dataFinances}
-                updateTransaction={updateTransaction}
-                deleteTransaction={deleteTransaction}
-            />
-            {isMenuOpen && (
-                <AddEditTransactionInterface
-                    closeInterface={() => setIsMenuOpen(false)}
-                    addTransaction={addTransaction}
+                <Button
+                    label={'Nova Transação'}
+                    className="btn btn-add"
+                    onClick={() => setIsMenuOpen(true)}
                 />
-            )}
-        </div>
+
+                {isMenuOpen && (
+                    <AddEditTransactionInterface
+                        closeInterface={() => setIsMenuOpen(false)}
+                        addTransaction={addTransaction}
+                    />
+                )}
+            </div>
+
+            {dataFinances.length > 0 ? (
+                <div className="container">
+                    <TransactionsCard
+                        transactionList={dataFinances}
+                        updateTransaction={updateTransaction}
+                        deleteTransaction={deleteTransaction}
+                    />
+                </div>
+            ) : null}
+        </>
     );
 }

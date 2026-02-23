@@ -1,0 +1,8 @@
+@media (min-width: 48em) {
+    html {
+        font-size: 56.25%;
+    }
+    .container {
+        max-width: 60rem;
+    }
+}

@@ -81,128 +81,133 @@ function AddEditTransactionInterface({
     };
 
     return (
-        <section>
-            <h2>
-                {typeFormSelected === 'add'
-                    ? 'Nova Transação'
-                    : 'Editar Transação'}
-            </h2>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <label htmlFor="description">Descrição</label>
-                    <Input
-                        id={'description'}
-                        value={formInputs.description}
-                        onChange={(e) =>
-                            setFormInputs((prev) => ({
-                                ...prev,
-                                description: e.target.value,
-                            }))
-                        }
-                        onBlur={(e) =>
-                            setErrors((prev) => ({
-                                ...prev,
-                                description: validateForm(
-                                    e.target.value,
-                                    'description',
-                                ),
-                            }))
-                        }
-                    />
-                    {errors.description && <span>{errors.description}</span>}
-                </div>
-
-                <div>
-                    <label htmlFor="date">Data</label>
-                    <input
-                        id="date"
-                        type="date"
-                        value={formInputs.date}
-                        onChange={(e) =>
-                            setFormInputs((prev) => ({
-                                ...prev,
-                                date: e.target.value,
-                            }))
-                        }
-                        onBlur={(e) =>
-                            setErrors((prev) => ({
-                                ...prev,
-                                date: validateForm(e.target.value, 'date'),
-                            }))
-                        }
-                    />
-                    {errors.date && <span>{errors.date}</span>}
-                </div>
-
-                <div>
-                    <label htmlFor="type">Tipo</label>
-                    <select
-                        name="type"
-                        id="type"
-                        value={formInputs.type}
-                        onChange={(e) =>
-                            setFormInputs((prev) => ({
-                                ...prev,
-                                type: e.target.value,
-                            }))
-                        }
-                        onBlur={(e) =>
-                            setErrors((prev) => ({
-                                ...prev,
-                                type: validateForm(e.target.value, 'type'),
-                            }))
-                        }
-                    >
-                        <option value="" disabled>
-                            Selecione um tipo
-                        </option>
-                        <option value="income">Receita</option>
-                        <option value="expense">Despesa</option>
-                    </select>
-                    {errors.type && <span>{errors.type}</span>}
-                </div>
-
-                <div>
-                    <label htmlFor="value">Valor</label>
-                    <Input
-                        id={'value'}
-                        value={formInputs.value}
-                        onChange={(e) =>
-                            setFormInputs((prev) => ({
-                                ...prev,
-                                value: e.target.value,
-                            }))
-                        }
-                        onBlur={(e) =>
-                            setErrors((prev) => ({
-                                ...prev,
-                                value: validateForm(
-                                    validateValue(e.target.value),
-                                    'value',
-                                ),
-                            }))
-                        }
-                    />
-                </div>
-
-                <div>
-                    <Button
-                        label={
-                            typeFormSelected === 'add'
-                                ? 'Adicionar'
-                                : 'Salvar Alterações'
-                        }
-                        type="submit"
-                    />
-                    <Button
-                        label={'Cancelar'}
-                        onClick={() => {
-                            cleanForm();
-                            closeInterface();
-                        }}
-                    />
-                </div>
-            </form>
+        <section className="add-edit-container-lg">
+            <div className="add-edit-container">
+                <h2>
+                    {typeFormSelected === 'add'
+                        ? 'Nova Transação'
+                        : 'Editar Transação'}
+                </h2>
+                <form
+                    className="form-add-edit"
+                    onSubmit={(e) => handleSubmit(e)}
+                >
+                    <div>
+                        <label htmlFor="description">Descrição</label>
+                        <Input
+                            id={'description'}
+                            value={formInputs.description}
+                            onChange={(e) =>
+                                setFormInputs((prev) => ({
+                                    ...prev,
+                                    description: e.target.value,
+                                }))
+                            }
+                            onBlur={(e) =>
+                                setErrors((prev) => ({
+                                    ...prev,
+                                    description: validateForm(
+                                        e.target.value,
+                                        'description',
+                                    ),
+                                }))
+                            }
+                        />
+                        {errors.description && (
+                            <span>{errors.description}</span>
+                        )}
+                    </div>
+                    <div>
+                        <label htmlFor="date">Data</label>
+                        <input
+                            id="date"
+                            type="date"
+                            value={formInputs.date}
+                            onChange={(e) =>
+                                setFormInputs((prev) => ({
+                                    ...prev,
+                                    date: e.target.value,
+                                }))
+                            }
+                            onBlur={(e) =>
+                                setErrors((prev) => ({
+                                    ...prev,
+                                    date: validateForm(e.target.value, 'date'),
+                                }))
+                            }
+                        />
+                        {errors.date && <span>{errors.date}</span>}
+                    </div>
+                    <div>
+                        <label htmlFor="type">Tipo</label>
+                        <select
+                            name="type"
+                            id="type"
+                            value={formInputs.type}
+                            onChange={(e) =>
+                                setFormInputs((prev) => ({
+                                    ...prev,
+                                    type: e.target.value,
+                                }))
+                            }
+                            onBlur={(e) =>
+                                setErrors((prev) => ({
+                                    ...prev,
+                                    type: validateForm(e.target.value, 'type'),
+                                }))
+                            }
+                        >
+                            <option value="" disabled>
+                                Selecione um tipo
+                            </option>
+                            <option value="income">Receita</option>
+                            <option value="expense">Despesa</option>
+                        </select>
+                        {errors.type && <span>{errors.type}</span>}
+                    </div>
+                    <div>
+                        <label htmlFor="value">Valor</label>
+                        <Input
+                            id={'value'}
+                            value={formInputs.value}
+                            onChange={(e) =>
+                                setFormInputs((prev) => ({
+                                    ...prev,
+                                    value: e.target.value,
+                                }))
+                            }
+                            onBlur={(e) =>
+                                setErrors((prev) => ({
+                                    ...prev,
+                                    value: validateForm(
+                                        validateValue(e.target.value),
+                                        'value',
+                                    ),
+                                }))
+                            }
+                        />
+                    </div>
+                    <div className="add-btn-container">
+                        <Button
+                            className="btn btn-add"
+                            label={
+                                typeFormSelected === 'add'
+                                    ? 'Adicionar'
+                                    : 'Salvar'
+                            }
+                            type="submit"
+                        />
+                        <Button
+                            className="btn btn-add"
+                            label={'Cancelar'}
+                            onClick={() => {
+                                cleanForm();
+                                closeInterface();
+                            }}
+                        />
+                    </div>
+                </form>
+            </div>
         </section>
     );
 }

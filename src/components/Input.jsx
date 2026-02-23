@@ -12,6 +12,7 @@ function Input({
             onChange={onChange}
             onBlur={onBlur}
             value={value}
+            autoComplete="off"
         ></input>
     );
 }
