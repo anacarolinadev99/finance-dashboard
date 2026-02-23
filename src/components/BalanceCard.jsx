@@ -10,11 +10,19 @@ function BalanceCard({ transactionList }) {
     }, 0);
 
     return (
-        <section>
+        <section className="totalBalance">
             <h2>Saldo Total</h2>
             <p>
                 R${' '}
-                <span>
+                <span
+                    className={
+                        totalBalance >= 0
+                            ? totalBalance === 0
+                                ? ''
+                                : 'positive'
+                            : 'negative'
+                    }
+                >
                     {totalBalance
                         ? convertValueToBRLString(totalBalance)
                         : '0.00'}

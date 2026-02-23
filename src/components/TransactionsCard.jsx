@@ -23,9 +23,9 @@ function TransactionsCard({
     };
 
     return (
-        <div>
+        <section>
             <h2>Transações</h2>
-            <ul>
+            <ul className="transactionsList">
                 {transactionList &&
                     transactionList.map((transaction) => (
                         <ListItemLi
@@ -57,7 +57,7 @@ function TransactionsCard({
                     }
                 />
             )}
-        </div>
+        </section>
     );
 }
 
