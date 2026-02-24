@@ -193,6 +193,35 @@ ul {
     border-color: red;
 }
 
+.container-filter {
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    font-size: 1.6rem;
+    margin-top: 1rem;
+
+    & div {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & div input[type='radio'] {
+        appearance: none;
+    }
+
+    & div label {
+        padding: 0.2rem;
+    }
+
+    & div:has(input[type='radio']:checked) {
+        background-color: var(--border-color);
+    }
+}
+
 .transactionsList {
     margin-top: 2rem;
     font-size: 1.8rem;
