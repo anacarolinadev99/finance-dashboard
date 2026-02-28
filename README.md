@@ -36,4 +36,4 @@ Inicialmente o gráfico foi implementado com Recharts, porém devido a conflitos
 
 ## Deploy
 
-Em breve disponível
+link: https://finance-dashboard-three-rosy.vercel.app/
