@@ -5,6 +5,7 @@ import Button from './components/Button';
 import TransactionsCard from './components/TransactionsCard';
 import AddEditTransactionInterface from './components/AddEditTransactionInterface';
 import { useFinance } from './hooks/useFinance';
+import Chart from './components/Chart';
 
 export function App() {
     const {
@@ -23,34 +24,30 @@ export function App() {
                     Gerenciador Financeiro
                 </h1>
             </header>
-            <div className="container">
-                <BalanceCard transactionList={dataFinances} />
-            </div>
-            <div className="container summary-container">
-                <SummaryCards transactionList={dataFinances} />
 
-                <Button
-                    label={'Nova Transação'}
-                    className="btn btn-add"
-                    onClick={() => setIsMenuOpen(true)}
+            <BalanceCard transactionList={dataFinances} />
+
+            <SummaryCards transactionList={dataFinances} />
+
+            <Button
+                label={'Nova Transação'}
+                className="btn btn-add"
+                onClick={() => setIsMenuOpen(true)}
+            />
+
+            {isMenuOpen && (
+                <AddEditTransactionInterface
+                    closeInterface={() => setIsMenuOpen(false)}
+                    addTransaction={addTransaction}
                 />
-
-                {isMenuOpen && (
-                    <AddEditTransactionInterface
-                        closeInterface={() => setIsMenuOpen(false)}
-                        addTransaction={addTransaction}
-                    />
-                )}
-            </div>
+            )}
 
             {dataFinances.length > 0 ? (
-                <div className="container">
-                    <TransactionsCard
-                        transactionList={dataFinances}
-                        updateTransaction={updateTransaction}
-                        deleteTransaction={deleteTransaction}
-                    />
-                </div>
+                <TransactionsCard
+                    transactionList={dataFinances}
+                    updateTransaction={updateTransaction}
+                    deleteTransaction={deleteTransaction}
+                />
             ) : null}
         </>
     );

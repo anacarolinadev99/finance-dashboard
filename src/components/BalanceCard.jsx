@@ -10,7 +10,7 @@ function BalanceCard({ transactionList }) {
     }, 0);
 
     return (
-        <section className="totalBalance">
+        <section className="totalBalance container">
             <h2>Saldo Total</h2>
             <p>
                 R${' '}

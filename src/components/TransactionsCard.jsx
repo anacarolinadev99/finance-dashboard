@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import ListItemLi from './ListItemLi';
 import AddEditTransactionInterface from './AddEditTransactionInterface';
 import ConfirmAction from './ConfirmAction';
-import Input from './Input';
 import Filter from './Filter';
 
 function TransactionsCard({
@@ -41,26 +40,21 @@ function TransactionsCard({
                 ),
             );
         setFilteredList(transactionList);
-    }, [filterSelected]);
-
-    //Transformar o filter em componente
-    //Usar o componente input(arrumar)
-    //Arrumar o css
+    }, [filterSelected, transactionList]);
 
     return (
-        <section>
-            <h2>Transações</h2>
+        <section className="container">
+            <h2 className="title-transaction-section">Transações</h2>
             <Filter
                 setFilterSelected={setFilterSelected}
                 filterSelected={filterSelected}
             />
             <ul className="transactionsList">
-                {transactionList &&
+                {filteredList &&
                     filteredList.map((transaction) => (
                         <ListItemLi
                             key={transaction.id}
                             transactionItem={transaction}
-                            forList="transactionCard"
                             selectTransaction={setTransactionSelected}
                             actionSelected={setActionSelected}
                         />

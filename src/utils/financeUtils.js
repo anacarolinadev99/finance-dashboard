@@ -46,7 +46,7 @@ export const validateForm = (data, type) => {
             return null;
 
         case 'value':
-            if (!data || Number(data) < 0 || isNaN(Number(data)))
+            if (!data || Number(data) <= 0 || isNaN(Number(data)))
                 return 'Por favor insira um saldo válido';
             return null;
 

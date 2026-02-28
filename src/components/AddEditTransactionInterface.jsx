@@ -176,16 +176,21 @@ function AddEditTransactionInterface({
                                     value: e.target.value,
                                 }))
                             }
-                            onBlur={(e) =>
+                            onBlur={(e) => {
+                                setFormInputs((prev) => ({
+                                    ...prev,
+                                    value: validateValue(e.target.value),
+                                }));
                                 setErrors((prev) => ({
                                     ...prev,
                                     value: validateForm(
-                                        validateValue(e.target.value),
+                                        formInputs.value,
                                         'value',
                                     ),
-                                }))
-                            }
+                                }));
+                            }}
                         />
+                        {errors.value && <span>{errors.value}</span>}
                     </div>
                     <div className="add-btn-container">
                         <Button

@@ -1,16 +1,39 @@
-# React + Vite
+# Gerenciador Financeiro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web para controle de receitas e despesas, com cálculo automático de saldo, visualização gráfica e persistência de dados no navegador.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+• Adicionar transações
+• Editar transações
+• Remover transações
+• Filtro por tipo (todos/receita/despesa)
+• Cálculo automático de saldo
+• Gráfico dinâmico com Chart.js
+• Persisência com localStorage
+• Válidação de valores
 
-## React Compiler
+## Tecnologias utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+• React
+• Chart.js
+• CSS
+• LocalStorage
+• Vite
 
-## Expanding the ESLint configuration
+## Como rodar o projeto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+npm install
+npm run dev
+
+## Decisões Técnicas
+
+Inicialmente o gráfico foi implementado com Recharts, porém devido a conflitos relacionados ao cálculo de dimensão do container, optei por usar o Chart.js para maior controle e estabilidade no comportamento responsivo.
+
+## Preview
+
+![Gerenciador Financeiro](./preview.png);
+
+## Deploy
+
+Em breve disponível

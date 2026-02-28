@@ -9,7 +9,7 @@ function Filter({ setFilterSelected, filterSelected }) {
                     type="radio"
                     name="filter"
                     id="filter-all"
-                    cheacked={filterSelected === 'all' ? true : false}
+                    checked={filterSelected === 'all' ? true : false}
                     onChange={() => setFilterSelected('all')}
                 />
                 <label htmlFor="filter-all">Todos</label>

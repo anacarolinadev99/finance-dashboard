@@ -4,7 +4,6 @@ import Button from './Button';
 
 function ListItemLi({
     transactionItem,
-    forList = 'summary',
     selectTransaction = () => {},
     actionSelected = () => {},
 }) {
@@ -19,60 +18,56 @@ function ListItemLi({
 
     return (
         <li>
-            {forList === 'summary' ? (
-                <p>{text}</p>
-            ) : (
-                <>
-                    <div className="trancation-value">
-                        <span>{transactionItem?.description}</span>
-                        <span>{dateFormataded}</span>
-                        <span
-                            className={
-                                transactionItem?.type === 'income'
-                                    ? 'positive'
-                                    : 'negative'
-                            }
-                        >
-                            {text}
-                        </span>
-                    </div>
-
-                    <div
-                        className={`btn-container ${!isMenuOpen ? 'hide-mobile' : null}`}
+            <>
+                <div className="trancation-value">
+                    <span>{transactionItem?.description}</span>
+                    <span>{dateFormataded}</span>
+                    <span
+                        className={
+                            transactionItem?.type === 'income'
+                                ? 'positive'
+                                : 'negative'
+                        }
                     >
-                        <Button
-                            label={'Editar'}
-                            className="btn btn-update"
-                            onClick={() => {
-                                selectTransaction(transactionItem);
-                                actionSelected({
-                                    edit: true,
-                                    delete: false,
-                                    none: false,
-                                });
-                            }}
-                        />
-                        <Button
-                            label={'Apagar'}
-                            className="btn btn-delete"
-                            onClick={() => {
-                                selectTransaction(transactionItem);
-                                actionSelected({
-                                    edit: false,
-                                    delete: true,
-                                    none: false,
-                                });
-                            }}
-                        />
-                    </div>
+                        {text}
+                    </span>
+                </div>
 
+                <div
+                    className={`btn-container ${!isMenuOpen ? 'hide-mobile' : null}`}
+                >
                     <Button
-                        className="btn-menu mobile"
-                        label={isMenuOpen ? '˄' : '˅'}
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        label={'Editar'}
+                        className="btn btn-update"
+                        onClick={() => {
+                            selectTransaction(transactionItem);
+                            actionSelected({
+                                edit: true,
+                                delete: false,
+                                none: false,
+                            });
+                        }}
                     />
-                </>
-            )}
+                    <Button
+                        label={'Apagar'}
+                        className="btn btn-delete"
+                        onClick={() => {
+                            selectTransaction(transactionItem);
+                            actionSelected({
+                                edit: false,
+                                delete: true,
+                                none: false,
+                            });
+                        }}
+                    />
+                </div>
+
+                <Button
+                    className="btn-menu mobile"
+                    label={isMenuOpen ? '˄' : '˅'}
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                />
+            </>
         </li>
     );
 }
